@@ -60,9 +60,14 @@ namespace SmartSchool_WebAPI.Controllers
         {
             try
             {
+                if (model.AlunosDisciplinas == null)
+                {
+                    model.AlunosDisciplinas = new List<AlunoDisciplina>();
+                }
+
                 _repo.Add(model);
-                
-                if(await _repo.SaveChangesAsync())
+
+                if (await _repo.SaveChangesAsync())
                 {
                     return Ok(model);
                 }
